@@ -25,10 +25,10 @@ public class NaviLaunchActivity extends Activity {
 	public void onFlyButtonClick(View view){
 		Builder build = new Notification.Builder(this).setContentTitle("Hey, listen!")
 				.setTicker("Hey, listen!").setSmallIcon(R.drawable.navi_icon)
-				.addAction(android.R.drawable.ic_btn_speak_now, "Yes?", PendingIntent.getActivity(getApplicationContext(), 0, getIntent(), 0, null))
-				.addAction(android.R.drawable.ic_dialog_info, "Ignore", PendingIntent.getActivity(getApplicationContext(), 0, getIntent(), 0, null));
+				.addAction(R.drawable.ic_stat_yes_icon, "Yes?", PendingIntent.getActivity(getApplicationContext(), 0, getIntent(), 0, null))
+				.addAction(R.drawable.ic_stat_ignore_icon, "Ignore", PendingIntent.getActivity(getApplicationContext(), 0, getIntent(), 0, null));
 
-		Notification notification = new Notification.BigPictureStyle(build).bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.fly))
+		Notification notification = new Notification.BigPictureStyle(build).bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.navi_glow))
 				.build();
 
 		
