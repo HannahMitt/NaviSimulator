@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 
+
 public class NaviLaunchActivity extends Activity {
 
 	private NotificationManager mNotificationManager;
@@ -22,8 +23,8 @@ public class NaviLaunchActivity extends Activity {
 	}
 	
 	public void onFlyButtonClick(View view){
-		Builder build = new Notification.Builder(this).setContentTitle("Hey, listen!").setContentText("You enter a dark dungeon room, what do you do?")
-				.setTicker("Hey, listen!").setSmallIcon(R.drawable.ic_action_search)
+		Builder build = new Notification.Builder(this).setContentTitle("Hey, listen!")
+				.setTicker("Hey, listen!").setSmallIcon(R.drawable.navi_icon)
 				.addAction(android.R.drawable.ic_btn_speak_now, "Yes?", PendingIntent.getActivity(getApplicationContext(), 0, getIntent(), 0, null))
 				.addAction(android.R.drawable.ic_dialog_info, "Ignore", PendingIntent.getActivity(getApplicationContext(), 0, getIntent(), 0, null));
 
