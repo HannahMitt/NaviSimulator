@@ -10,11 +10,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 
-
 public class NaviLaunchActivity extends Activity {
 
 	private NotificationManager mNotificationManager;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,24 +21,31 @@ public class NaviLaunchActivity extends Activity {
 
 		mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 	}
-	
-	public void onFlyButtonClick(View view){
+
+	public void onFlyButtonClick(View view) {
+		mNotificationManager.notify(0, getHeyListenNotification());
+	}
+
+	private Notification getHeyListenNotification() {
 		Intent listenIntent = new Intent();
 		listenIntent.setClass(this, NotificationReceiver.class);
 		listenIntent.setAction(NotificationReceiver.ACTION_NAVI_LISTEN);
-		
+
 		PendingIntent listenPending = PendingIntent.getService(this, 0, listenIntent, 0);
-		
-		Builder build = new Notification.Builder(this).setContentTitle("Hey, listen!")
-				.setTicker("Hey, listen!").setSmallIcon(R.drawable.navi_icon)
-				.addAction(R.drawable.ic_stat_yes_icon, "Yes?", listenPending)
-				.addAction(R.drawable.ic_stat_ignore_icon, "Ignore", PendingIntent.getActivity(getApplicationContext(), 0, getIntent(), 0, null));
+
+		Intent ignoreIntent = new Intent();
+		ignoreIntent.setClass(this, NotificationReceiver.class);
+		ignoreIntent.setAction(NotificationReceiver.ACTION_NAVI_IGNORE);
+
+		PendingIntent ignorePending = PendingIntent.getService(this, 0, ignoreIntent, 0);
+
+		Builder build = new Notification.Builder(this).setContentTitle("Hey, listen!").setTicker("Hey, listen!").setSmallIcon(R.drawable.navi_icon)
+				.addAction(R.drawable.ic_stat_yes_icon, "Yes?", listenPending).addAction(R.drawable.ic_stat_ignore_icon, "Ignore", ignorePending);
 
 		Notification notification = new Notification.BigPictureStyle(build).bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.navi_glow))
 				.build();
 
-		
-		mNotificationManager.notify(0, notification);
+		return notification;
 	}
 
 }
