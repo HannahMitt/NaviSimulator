@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
+import android.net.Uri;
 
 public class NaviNotifications {
 
@@ -23,7 +25,7 @@ public class NaviNotifications {
 		PendingIntent ignorePending = PendingIntent.getService(context, 0, ignoreIntent, 0);
 
 		Builder build = new Notification.Builder(context).setContentTitle("Hey, listen!").setTicker("Hey, listen!").setSmallIcon(R.drawable.navi_icon)
-				.addAction(R.drawable.ic_stat_yes_icon, "Yes?", listenPending).setDeleteIntent(ignorePending);
+				.addAction(R.drawable.ic_stat_yes_icon, "Yes?", listenPending).setDeleteIntent(ignorePending).setSound(Uri.parse("android.resource://com.hannah.navisimulator/" + R.raw.navi_listen), AudioManager.STREAM_NOTIFICATION);
 
 		Notification notification = new Notification.BigPictureStyle(build).bigPicture(
 				BitmapFactory.decodeResource(context.getResources(), R.drawable.navi_glow)).build();
