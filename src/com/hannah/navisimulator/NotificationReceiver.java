@@ -40,6 +40,8 @@ public class NotificationReceiver extends IntentService {
 			mgr.notify(0, NaviNotifications.getListenNotification(this, NAVI_MESSAGES[messageId], RESPONSES[responseId]));
 
 		} else if (ACTION_NAVI_IGNORE.equals(intent.getAction())) {
+			mgr.cancel(0);
+
 			TimerTask timerTask = new TimerTask() {
 
 				@Override
