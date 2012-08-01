@@ -9,7 +9,7 @@ import android.graphics.BitmapFactory;
 
 public class NaviNotifications {
 
-	public static Notification getHeyListenNotification(Context context){
+	public static Notification getHeyListenNotification(Context context) {
 		Intent listenIntent = new Intent();
 		listenIntent.setClass(context, NotificationReceiver.class);
 		listenIntent.setAction(NotificationReceiver.ACTION_NAVI_LISTEN);
@@ -23,11 +23,11 @@ public class NaviNotifications {
 		PendingIntent ignorePending = PendingIntent.getService(context, 0, ignoreIntent, 0);
 
 		Builder build = new Notification.Builder(context).setContentTitle("Hey, listen!").setTicker("Hey, listen!").setSmallIcon(R.drawable.navi_icon)
-				.addAction(R.drawable.ic_stat_yes_icon, "Yes?", listenPending).addAction(R.drawable.ic_stat_ignore_icon, "Ignore", ignorePending);
+				.addAction(R.drawable.ic_stat_yes_icon, "Yes?", listenPending).setDeleteIntent(ignorePending);
 
-		Notification notification = new Notification.BigPictureStyle(build).bigPicture(BitmapFactory.decodeResource(context.getResources(), R.drawable.navi_glow))
-				.build();
-		
+		Notification notification = new Notification.BigPictureStyle(build).bigPicture(
+				BitmapFactory.decodeResource(context.getResources(), R.drawable.navi_glow)).build();
+
 		return notification;
 	}
 }
