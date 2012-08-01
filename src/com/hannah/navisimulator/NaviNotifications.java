@@ -44,7 +44,7 @@ public class NaviNotifications {
 
 		Builder build = new Notification.Builder(context).setContentTitle(context.getString(R.string.hey_listen))
 				.setTicker(context.getString(R.string.hey_listen)).setSmallIcon(R.drawable.navi_icon).setDeleteIntent(ignorePending)
-				.addAction(android.R.drawable.ic_delete, response, ignorePending);
+				.addAction(R.drawable.ic_stat_duh, response, ignorePending);
 
 		Notification notification = new Notification.BigTextStyle(build).bigText(naviMessage).build();
 
