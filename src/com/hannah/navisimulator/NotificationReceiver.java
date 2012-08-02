@@ -17,8 +17,9 @@ public class NotificationReceiver extends IntentService {
 	public static String SWITCH_NOTIFICATION_ARG_NOTIFICATION = "NOTIF_NOTIFICATION";
 
 	private static final int NAVI_REPEAT_MILLIS = 1000 * 20;
-	private static final String[] NAVI_MESSAGES = { "Princess Zelda is in trouble!", "This area is dangerous.", "Go find the Spiritual Stones!" };
-	private static final String[] RESPONSES = { "I know.", "Yeah. Thanks.", "Ok?" };
+	private static final String[] NAVI_MESSAGES = { "Princess Zelda is in trouble!", "This area is dangerous.", "Go find the Spiritual Stones!",
+			"You look nice today.", "You're getting low on health.", "Something feels strange...", "Hurry! The fate of Hyrule depends on you!" };
+	private static final String[] RESPONSES = { "I know.", "Yeah. Thanks.", "Ok?", "...", "That's great.", "I deeply appreciate your input." };
 
 	private Random mRandom;
 
@@ -28,7 +29,7 @@ public class NotificationReceiver extends IntentService {
 	}
 
 	@Override
-	protected void onHandleIntent(Intent intent) {
+	protected void onHandleIntent(Intent intent) { 
 
 		final NotificationManager mgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 

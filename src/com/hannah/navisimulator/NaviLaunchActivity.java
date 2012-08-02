@@ -13,6 +13,8 @@ public class NaviLaunchActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_navi_launch);
+		getActionBar().setTitle(R.string.title_activity_navi_launch);
+		getActionBar().setDisplayShowHomeEnabled(false);
 
 		mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 	}
