@@ -9,6 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onFlyButtonClick"
-        android:text="@string/fly_navi_fly" />
+        android:text="@string/fly_navi_fly" 
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:layout_margin="10dp"/>
 
 </LinearLayout>
